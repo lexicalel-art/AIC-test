@@ -11,7 +11,7 @@ Use only these notes:
 - How far ahead to order: Order a few weeks ahead, especially for custom colours or designs.
 If something isn't in the notes, say you don't know."""
 
-st.title("Ai build testing (test)")
+st.title("Aso ofi AI (test)")
 question = st.text_input("Ask about aso ofi")
 
 if question:
