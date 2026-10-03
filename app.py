@@ -8,5 +8,8 @@ question = st.text_input("Ask anything about Lagos")
 
 if question:
     with st.spinner("Thinking..."):
-        reply = client.models.generate_content(model="gemma-4-26b-a4b-it", contents=question)
-    st.markdown(reply.text)
+        try:
+            reply = client.models.generate_content(model="gemma-4-26b-a4b-it", contents=question)
+            st.markdown(reply.text)
+        except Exception as e:
+            st.error(str(e))
