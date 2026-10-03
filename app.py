@@ -23,3 +23,5 @@ if question:
             st.markdown(reply.text)
         except Exception as e:
             st.error(str(e))
+
+   st.link_button("Reserve with a deposit (ALATpay)", "https://lexicalel-art.github.io/AIC-test/pay.html")
