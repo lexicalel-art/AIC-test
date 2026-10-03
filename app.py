@@ -3,13 +3,23 @@ from google import genai
 
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
-st.title("Lagos guide (test)")
-question = st.text_input("Ask anything about Lagos")
+instructions = """You help wedding guests buy aso ofi (also called aso oke) in Lagos.
+Use only these notes:
+- Types: ...
+- Where to buy: ...
+- Price ranges: ...
+- How far ahead to order: ...
+If something isn't in the notes, say you don't know."""
+
+st.title("Aso ofi helper (test)")
+question = st.text_input("Ask about aso ofi")
 
 if question:
     with st.spinner("Thinking..."):
         try:
-            reply = client.models.generate_content(model="gemma-4-26b-a4b-it", contents=question)
+            reply = client.models.generate_content(
+                model="gemma-4-26b-a4b-it",
+                contents=instructions + "\n\n" + question)
             st.markdown(reply.text)
         except Exception as e:
             st.error(str(e))
